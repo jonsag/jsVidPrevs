@@ -1,0 +1,6 @@
+Requires
+ffmpeg or avconv
+mplayer
+mediainfo
+gawk
+imagemagick
