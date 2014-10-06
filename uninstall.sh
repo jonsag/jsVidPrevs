@@ -2,7 +2,7 @@
 
 THISDIR=$(dirname $0)
 
-source $THISDIR/jsvidprevs.conf
+source $THISDIR/shvidprevs.conf
 
 echo
 
@@ -37,30 +37,30 @@ echo
 echo "Uninstalling..."
 echo
 
-if [ -h $INSTALLDIR/jsvidprevs ]; then
+if [ -h $INSTALLDIR/shvidprevs ]; then
    echo "Removing link"
-   rm -f $INSTALLDIR/jsvidprevs
+   rm -f $INSTALLDIR/shvidprevs
 else
     echo "Link does not exist"
 fi
 
-if [ -e $INSTALLDIR/$JSVIDPREVSDIR/jsvidprevs.sh ]; then
+if [ -e $INSTALLDIR/$SHVIDPREVSDIR/shvidprevs.sh ]; then
     echo "Removing scripts"
-    rm -f $INSTALLDIR/$JSVIDPREVSDIR/*.sh
+    rm -f $INSTALLDIR/$SHVIDPREVSDIR/*.sh
 else
     echo "Script does not exist"
 fi
 
-if [ -d $INSTALLDIR/$JSVIDPREVSDIR ]; then
+if [ -d $INSTALLDIR/$SHVIDPREVSDIR ]; then
     echo "Removing directory"
-    rmdir --ignore-fail-on-non-empty $INSTALLDIR/$JSVIDPREVSDIR
+    rmdir --ignore-fail-on-non-empty $INSTALLDIR/$SHVIDPREVSDIR
 else
     echo "Directory does not exist"
 fi
 
 echo
 
-if [ -h $INSTALLDIR/jsvidprevs ] || [ -e $INSTALLDIR/$JSVIDPREVSDIR/jsvidprevs.sh ] || [ -d $INSTALLDIR/$JSVIDPREVSDIR ]; then
+if [ -h $INSTALLDIR/shvidprevs ] || [ -e $INSTALLDIR/$SHVIDPREVSDIR/shvidprevs.sh ] || [ -d $INSTALLDIR/$SHVIDPREVSDIR ]; then
     echo "Everything could not be uninstalled"
     echo "Exiting"
     exit 1

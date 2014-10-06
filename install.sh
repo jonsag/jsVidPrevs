@@ -5,7 +5,7 @@ UNINSTALL="no"
 
 # read conf file
 echo "Reading configuration file..."
-source $THISDIR/jsvidprevs.conf
+source $THISDIR/shvidprevs.conf
 
 echo
 
@@ -39,7 +39,7 @@ fi
 echo
 
 # check for previous installation
-if [ -d $INSTALLDIR/$JSVIDPREVSDIR ] || [ -e $INSTALLDIR/jsvidprevs ]; then
+if [ -d $INSTALLDIR/$SHVIDPREVSDIR ] || [ -e $INSTALLDIR/shvidprevs ]; then
     echo "The directory and/or files already exist"
     echo "Do you want to uninstall first?"
     echo
@@ -62,9 +62,9 @@ else
 fi
 
 # create binaries directory, copy scripts to it, and create link
-mkdir $INSTALLDIR/$JSVIDPREVSDIR
-cp $THISDIR/*.sh $INSTALLDIR/$JSVIDPREVSDIR/
-ln -s $JSVIDPREVSDIR/jsvidprevs.sh $INSTALLDIR/jsvidprevs
+mkdir $INSTALLDIR/$SHVIDPREVSDIR
+cp $THISDIR/*.sh $INSTALLDIR/$SHVIDPREVSDIR/
+ln -s $SHVIDPREVSDIR/shvidprevs.sh $INSTALLDIR/shvidprevs
 
 # check for logdir, and set permissions
 if [ -d $LOGDIR ]; then
@@ -90,7 +90,7 @@ fi
 echo
 
 # create conf file
-if [ -e $CONFFILEDIR/jsvidprevs.conf ]; then
+if [ -e $CONFFILEDIR/shvidprevs.conf ]; then
     echo "Configuration file already exists."
     echo "Do you wish to overwrite it?"
     PS3="Your Choice:"
@@ -104,24 +104,24 @@ fi
 
 # overwrite conf file if requested, and set permissions
 if [ $OVERWRITE == "yes" ]; then
-    cp $THISDIR/jsvidprevs.conf $CONFFILEDIR/jsvidprevs.conf
-    chmod a+rw $CONFFILEDIR/jsvidprevs.conf
+    cp $THISDIR/shvidprevs.conf $CONFFILEDIR/shvidprevs.conf
+    chmod a+rw $CONFFILEDIR/shvidprevs.conf
 else
     TIME=$(date +%y%m%d-%H:%M:%S)
-    cp $THISDIR/jsvidprevs.conf $CONFFILEDIR/jsvidprevs.conf.$TIME
-    chmod a+r $CONFFILEDIR/jsvidprevs.conf.$TIME
-    echo "A copy of the new configuration file is located at $CONFFILEDIR/jsvidprevs.conf.$TIME"
+    cp $THISDIR/shvidprevs.conf $CONFFILEDIR/shvidprevs.conf.$TIME
+    chmod a+r $CONFFILEDIR/shvidprevs.conf.$TIME
+    echo "A copy of the new configuration file is located at $CONFFILEDIR/shvidprevs.conf.$TIME"
 fi
 
 # check if install was successful
-if [ -d $INSTALLDIR/$JSVIDPREVSDIR ]; then
-    if [ -x $INSTALLDIR/$JSVIDPREVSDIR/jsvidprevs.sh ]; then
-        if [ -h $INSTALLDIR/jsvidprevs ]; then
+if [ -d $INSTALLDIR/$SHVIDPREVSDIR ]; then
+    if [ -x $INSTALLDIR/$SHVIDPREVSDIR/shvidprevs.sh ]; then
+        if [ -h $INSTALLDIR/shvidprevs ]; then
             echo "Install successful"
             echo
-            echo "Configuration file is at $CONFFILEDIR/jsvidprevs.conf"
+            echo "Configuration file is at $CONFFILEDIR/shvidprevs.conf"
             echo
-            echo "Run this program with jsvidprevs"
+            echo "Run this program with shvidprevs"
         else
             echo "Install unsuccessful"
             echo "No link created"

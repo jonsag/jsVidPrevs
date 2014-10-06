@@ -4,7 +4,7 @@ DUR=$1
 CONFFILEDIR=$2
 
 # read conf file
-source $CONFFILEDIR/jsvidprevs.conf
+source $CONFFILEDIR/shvidprevs.conf
 
 HOURS=`echo $DUR | gawk -F: '{ print $1 }'`
 if [ $HOURS != "00" ]; then

@@ -5,7 +5,7 @@ TIME=$2
 LOGFILE=$3
 
 # read conf file
-source $CONFFILEDIR/jsvidprevs.conf
+source $CONFFILEDIR/shvidprevs.conf
 
 # these are the files that will be processed
 FILES="$TEMPDIR/$TEMPPREFIX.files"
@@ -93,7 +93,7 @@ echo -e $YELLOW "Processing file no $COUNTER of $NO" $RESET
 		    DUR=`ffmpeg -i $FILE 2>&1 | grep "Duration" | cut -d ' ' -f 4 | sed s/,//`
 
 # converting duration to seconds
-		    $INSTALLDIR/$JSVIDPREVSDIR/dur_to_sec.sh $DUR $CONFFILEDIR
+		    $INSTALLDIR/$SHVIDPREVSDIR/dur_to_sec.sh $DUR $CONFFILEDIR
 		    SEC=`cat $TEMPDIR/$TEMPPREFIX.sec`
 		    rm -f $TEMPDIR/$TEMPPREFIX.sec
 
@@ -109,7 +109,7 @@ echo -e $YELLOW "Processing file no $COUNTER of $NO" $RESET
 			DUR=`avconv -i $FILE 2>&1 | grep "Duration" | cut -d ' ' -f 4 | sed s/,//`
 
 # converting duration to seconds
-			$INSTALLDIR/$JSVIDPREVSDIR/dur_to_sec.sh $DUR $CONFFILEDIR
+			$INSTALLDIR/$SHVIDPREVSDIR/dur_to_sec.sh $DUR $CONFFILEDIR
 			SEC=`cat $TEMPDIR/$TEMPPREFIX.sec`
 			rm -f $TEMPDIR/$TEMPPREFIX.sec
 
@@ -125,7 +125,7 @@ echo -e $YELLOW "Processing file no $COUNTER of $NO" $RESET
 			    DUR=`mediainfo '--Inform=General;%Duration/String3%' $FILE`
 
 # converting duration to seconds
-			    $INSTALLDIR/$JSVIDPREVSDIR/dur_to_sec.sh $DUR $CONFFILEDIR
+			    $INSTALLDIR/$SHVIDPREVSDIR/dur_to_sec.sh $DUR $CONFFILEDIR
 			    SEC=`cat $TEMPDIR/$TEMPPREFIX.sec`
 			    rm -f $TEMPDIR/$TEMPPREFIX.sec
 
@@ -246,7 +246,7 @@ echo -e $YELLOW "Processing file no $COUNTER of $NO" $RESET
 	    if [ $CAPERR != "0" ]; then
 		echo -e $YELLOW "Possibly a time error on the file" $RESET
 		echo -e $GREEN "Trying to reencode..." $RESET
-		$INSTALLDIR/$JSVIDPREVSDIR/reencode.sh $CONFFILEDIR $TIME $LOGFILE $FILE
+		$INSTALLDIR/$SHVIDPREVSDIR/reencode.sh $CONFFILEDIR $TIME $LOGFILE $FILE
 	    fi
 
 # do some calculations

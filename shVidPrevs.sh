@@ -13,17 +13,17 @@ fi
 
 # location of configuration file
 # this must correlate to line in configurationfile at install time
-CONFFILEDIR="/etc/jsvidprevs"
+CONFFILEDIR="/etc/shvidprevs"
 
 # version of this script
 VERSION="0.1"
 
 # checking for config and reading it
-if [ -e $CONFFILEDIR/jsvidprevs.conf ]; then
-    source $CONFFILEDIR/jsvidprevs.conf
+if [ -e $CONFFILEDIR/shvidprevs.conf ]; then
+    source $CONFFILEDIR/shvidprevs.conf
 else
     echo "###################################################################"
-    echo "You do not have a config file at $CONFFILEDIR/jsvidprevs.conf."
+    echo "You do not have a config file at $CONFFILEDIR/shvidprevs.conf."
     echo "Make sure it's in it's right place, and the try again!"
     echo "Exiting..."
     echo "###################################################################"
@@ -40,7 +40,7 @@ if [ -d $TEMPDIR ]; then
     echo "##########################################################################"
     echo -e $GREEN"Temporary directory $TEMPDIR exists" $RESET
     echo -e $YELLOW"Cleaning out old temp files..." $RESET
-    rm $TEMPDIR/jsvidprevs*
+    rm $TEMPDIR/shvidprevs*
     echo "##########################################################################"
 else
     echo "##########################################################################"
@@ -150,7 +150,7 @@ echo
 STARTUPTIME=$(date +%s)
 
 # remove spaces in filenames
-$INSTALLDIR/$JSVIDPREVSDIR/rename.sh
+$INSTALLDIR/$SHVIDPREVSDIR/rename.sh
 
 # find videofiles and removing characters in the beginning
 for TYPE in $TYPES
@@ -160,7 +160,7 @@ do
 done
 
 # running the script to make captures and contactsheets
-$INSTALLDIR/$JSVIDPREVSDIR/contactsheets.sh $CONFFILEDIR $TIME $LOGFILE
+$INSTALLDIR/$SHVIDPREVSDIR/contactsheets.sh $CONFFILEDIR $TIME $LOGFILE
 
 # will we keep the captures and the reencoded files
 if [ $KEEP != "yes" ]; then

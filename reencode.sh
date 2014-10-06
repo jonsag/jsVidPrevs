@@ -6,7 +6,7 @@ LOGFILE=$3
 FILE=$4
 
 # read conf file
-source $CONFFILEDIR/jsvidprevs.conf
+source $CONFFILEDIR/shvidprevs.conf
 
 # create reencode dir if necessary
 if [ -d "$REENCODEDIR" ]; then
